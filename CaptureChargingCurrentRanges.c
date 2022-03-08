@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include "CaptureChargingCurrentRanges.h"
 
-// void swapRangeSets(int *CurrentRanges)
-// {
-//   int i=0,swap;
-//   if(CurrentRanges[i] > CurrentRanges[i+1])
-//   {
-//         swap = CurrentRanges[i];
-//         CurrentRanges[i] = CurrentRanges[i+1];
-//         CurrentRanges[i+1] = swap;
-//         printf("sorted");
-//   }
-// }
-
 void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
 {
   int i,swap;
@@ -40,7 +28,7 @@ int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
     if(RangeDifference == 0 || RangeDifference == 1)
     {
       TotalPeriodicSetRanges++;
-      printf("Range, Readings");
+      printf("Range, Readings\n");
       printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentRanges);
     }
   
