@@ -20,12 +20,10 @@ void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
   }
 }
 
-int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
-  
-  int i,j,swap,lowerRange,NextElement,RangeDifference;
+int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
+{
+  int i,j,lowerRange,NextElement,RangeDifference;
   int TotalPeriodicSetRanges = 0;
-  
-  SortCurrentRanges(CurrentRanges,TotalCurrentRanges);
   
   for (i = 0; i < TotalCurrentRanges ; i++) 
   {
@@ -39,6 +37,15 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
       printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentRanges);
     }
   }
+  
+  return TotalPeriodicSetRanges;
+}
+
+int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
+  int TotalPeriodicSetRanges = 0;
+  
+  SortCurrentRanges(CurrentRanges,TotalCurrentRanges);
+  TotalPeriodicSetRanges = CheckForPeriodicSetRanges(CurrentRanges,TotalCurrentRanges);
   
   return TotalPeriodicSetRanges;
 }
