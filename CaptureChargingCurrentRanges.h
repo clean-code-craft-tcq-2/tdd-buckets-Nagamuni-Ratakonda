@@ -1,1 +1,1 @@
-int CaptureChargingCurrentRanges (int *CurrentRanges);
+int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges);
