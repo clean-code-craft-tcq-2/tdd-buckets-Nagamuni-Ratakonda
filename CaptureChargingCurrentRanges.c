@@ -6,16 +6,17 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
   int i,j,swap,lowerRange,NextElement,RangeDifference;
   int TotalPeriodicSetRanges = 0;
   
-  for(i = 1; i <= (TotalCurrentRanges-1); i++)
+  for(i = 0; i <TotalCurrentRanges; ++i)
   {
-    j = i;
-    while(j > 0 && CurrentRanges[j-1] > CurrentRanges[j])
+    for(j = i+1; j < TotalCurrentRanges; ++j)
     {
-      swap = CurrentRanges[j];
-      CurrentRanges[j] = CurrentRanges[j-1];
-      CurrentRanges[j-1] = swap;
-      j--;
-      printf("sorted");
+      if(CurrentRanges[i] > CurrentRanges[j])
+      {
+        swap = CurrentRanges[i];
+        CurrentRanges[i] = CurrentRanges[j];
+        CurrentRanges[j] = swap;
+        printf("sorted");
+      }
     }
   }
   
@@ -23,7 +24,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
   {
     lowerRange = CurrentRanges[i];
     NextElement = CurrentRanges[i+1];
-    RangeDifference = lowerRange - RangeDifference;
+    RangeDifference = NextElement - lowerRange;
     if(RangeDifference == 0 || RangeDifference == 1)
     {
       TotalPeriodicSetRanges++;
