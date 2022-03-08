@@ -34,5 +34,5 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
     }
   }
   
-  return TotalPeriodicSetRanges;
+  return TotalCurrentRanges;
 }
