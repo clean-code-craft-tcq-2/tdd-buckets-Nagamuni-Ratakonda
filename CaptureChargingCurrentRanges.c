@@ -1,26 +1,31 @@
 #include <stdio.h>
 #include "CaptureChargingCurrentRanges.h"
 
-void swapRangeSets(int *CurrentRanges)
-{
-  int i=0,swap;
-  if(CurrentRanges[i] > CurrentRanges[i+1])
-  {
-        swap = CurrentRanges[i];
-        CurrentRanges[i] = CurrentRanges[i+1];
-        CurrentRanges[i+1] = swap;
-        printf("sorted");
-  }
-}
+// void swapRangeSets(int *CurrentRanges)
+// {
+//   int i=0,swap;
+//   if(CurrentRanges[i] > CurrentRanges[i+1])
+//   {
+//         swap = CurrentRanges[i];
+//         CurrentRanges[i] = CurrentRanges[i+1];
+//         CurrentRanges[i+1] = swap;
+//         printf("sorted");
+//   }
+// }
 
 void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
 {
-  int i;
+  int i,swap;
   
   for(i = 0; i <(TotalCurrentRanges - 1); i++)
   {
-    swapRangeSets(CurrentRanges);
-    i = -1;
+    if(CurrentRanges[i] > CurrentRanges[i+1])
+    {
+      swap = CurrentRanges[i];
+      CurrentRanges[i] = CurrentRanges[i+1];
+      CurrentRanges[i+1] = swap;
+      i = -1;
+    }
   }
 }
 
