@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include "CaptureChargingCurrentRanges.h"
 
-int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
-  
-  int i,j,swap,lowerRange,NextElement,RangeDifference;
-  int TotalPeriodicSetRanges = 0;
+void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
+{
+  int i,j,swap;
   
   for(i = 0; i <TotalCurrentRanges; ++i)
   {
@@ -19,6 +18,14 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
       }
     }
   }
+}
+
+int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
+  
+  int i,j,swap,lowerRange,NextElement,RangeDifference;
+  int TotalPeriodicSetRanges = 0;
+  
+  SortCurrentRanges(CurrentRanges,TotalCurrentRanges);
   
   for (i = 0; i < TotalCurrentRanges ; i++) 
   {
