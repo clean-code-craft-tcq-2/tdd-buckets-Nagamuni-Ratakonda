@@ -22,6 +22,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
   
   for (i = 0; i < TotalCurrentRanges ; i++) 
   {
+    printf("Check for test execution");
     lowerRange = CurrentRanges[i];
     NextElement = CurrentRanges[i+1];
     RangeDifference = lowerRange - RangeDifference;
