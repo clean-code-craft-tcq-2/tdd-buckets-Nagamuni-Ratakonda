@@ -3,19 +3,19 @@
 
 void swapRangeSets(int *CurrentRanges)
 {
-  int i,swap;
+  int i=0,swap;
   if(CurrentRanges[i] > CurrentRanges[i+1])
   {
         swap = CurrentRanges[i];
-        CurrentRanges[i] = CurrentRanges[j+1];
-        CurrentRanges[j+1] = swap;
+        CurrentRanges[i] = CurrentRanges[i+1];
+        CurrentRanges[i+1] = swap;
         printf("sorted");
   }
 }
 
 void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
 {
-  int i,j,swap;
+  int i;
   
   for(i = 0; i <(TotalCurrentRanges - 1); i++)
   {
