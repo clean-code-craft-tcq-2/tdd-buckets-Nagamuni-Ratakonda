@@ -30,9 +30,9 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
     {
       TotalPeriodicSetRanges++;
       printf("Range, Readings");
-      printf("%d-%d, %d",lowerRange,NextElement,TotalPeriodicSetRanges);
+      printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentRanges);
     }
   }
   
-  return TotalCurrentRanges;
+  return TotalPeriodicSetRanges;
 }
