@@ -15,6 +15,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
       CurrentRanges[j] = CurrentRanges[j-1];
       CurrentRanges[j-1] = swap;
       j--;
+      printf("sorted");
     }
   }
   
