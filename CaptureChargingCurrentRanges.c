@@ -31,6 +31,10 @@ int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
       printf("Range, Readings\n");
       printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentRanges);
     }
+    else
+    {
+      TotalPeriodicSetRanges = 0;
+    }
   
   return TotalPeriodicSetRanges;
 }
