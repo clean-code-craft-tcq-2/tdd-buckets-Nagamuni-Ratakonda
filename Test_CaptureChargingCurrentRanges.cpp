@@ -12,8 +12,3 @@ TEST_CASE("Check for no periodic set of current ranges") {
   int CurrentRanges[] = {7,3};
   REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,2) == 0);
 }
-
-TEST_CASE("Check for no periodic set for 3 current ranges") {
-  int CurrentRanges[] = {9,3,10};
-  REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,3) == 1);
-}
