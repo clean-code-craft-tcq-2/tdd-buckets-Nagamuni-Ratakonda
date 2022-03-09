@@ -45,7 +45,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
   
   SortCurrentRanges(CurrentRanges,TotalCurrentRanges);
   
-  for(i = 0; i < TotalCurrentRanges ; i++)
+  for(i = 0; i < (TotalCurrentRanges-1) ; i++)
   {
    TotalPeriodicSetRanges = CheckForPeriodicSetRanges(CurrentRanges,TotalCurrentRanges);
   }
