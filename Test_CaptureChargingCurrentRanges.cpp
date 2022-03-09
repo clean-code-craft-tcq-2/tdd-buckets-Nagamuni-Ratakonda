@@ -8,12 +8,12 @@ TEST_CASE("Checks the charging current ranges and captures the no of occurences"
   REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,2) == 1);
 }
 
-TEST_CASE("Checks the charging current of same ranges and captures the no of occurences") {
-  int CurrentRanges[] = {4,4};
-  REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,2) == 1);
-}
-
 TEST_CASE("Check for no periodic set of current ranges") {
   int CurrentRanges[] = {7,3};
   REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,2) == 0);
+}
+
+TEST_CASE("Checks the charging current of same ranges and captures the no of occurences") {
+  int CurrentRanges[] = {4,4};
+  REQUIRE(CaptureChargingCurrentRanges(CurrentRanges,2) == 1);
 }
