@@ -2,6 +2,7 @@
 
 #include "test/catch.hpp"
 #include "CaptureChargingCurrentRanges.h"
+#include "A2DConverter.h"
 
 TEST_CASE("Checks the charging current ranges and captures the no of occurences") {
   int CurrentRanges[] = {4,5};
