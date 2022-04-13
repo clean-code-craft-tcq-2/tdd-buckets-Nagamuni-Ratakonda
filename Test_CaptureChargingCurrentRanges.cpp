@@ -24,10 +24,10 @@ TEST_CASE("Testcase to cehck whether Analog current ranges converted to Digital"
   int AnalogCurrentRanges[] = {4094, 819,3790,1230,1640,2870};
   int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
   float DigitalCurrentRanges[TotalNoOfCurrentRanges];
-  float ExpectedCurrentRangesInAmps[] = {10, 2, 9, 3, 4 , 7};
+  int ExpectedCurrentRangesInAmps[] = {10, 2, 9, 3, 4 , 7};
   
   
-  REQUIRE(ConvertAnalogCurrentRangesToDigital() == true);
+  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == true);
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
