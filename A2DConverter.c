@@ -7,7 +7,6 @@ bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalC
 {
   bool allCurrentRangesConverted = true;
   int currentRangeIndex = 0;
-  float convertedValue = 0;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
@@ -22,8 +21,7 @@ bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalC
   {
     for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
     {
-      convertedValue = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
-      DigitalCurrentRanges[currentRangeIndex] = round(convertedValue);
+      DigitalCurrentRanges[currentRangeIndex] = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
     }
   }
   
