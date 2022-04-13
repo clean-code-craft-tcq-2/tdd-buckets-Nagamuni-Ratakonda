@@ -27,7 +27,7 @@ TEST_CASE("Testcase to cehck whether Analog current ranges converted to Digital"
   int ExpectedCurrentRangesInAmps[] = {3, 3, 3, 3, 3, 10};
   
   
-  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == true);
+  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges) == true);
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
