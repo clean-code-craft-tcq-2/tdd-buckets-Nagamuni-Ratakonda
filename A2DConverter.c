@@ -20,6 +20,7 @@ void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int Tota
   {
     convertedValue = AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
     currentValue = TEMPERATURE_MIN + (TEMPERATURE_MAX * convertedValue * ScalingValue);
+    printf("Current value:%f\n",currentValue);
     DigitalCurrentRanges[currentRangeIndex] = round(currentValue);
     
     if(DigitalCurrentRanges[currentRangeIndex] < 0)
@@ -38,7 +39,7 @@ bool ValidateAnalogCurrentRanges(int *AnalogCurrentRanges, int TotalNoOfCurrentR
   {
     if(AnalogCurrentRanges[currentRangeIndex] > 4094)
     {
-      printf("Invalid current reading");
+      printf("Invalid current reading\n");
       areAllRangesValid = false;
     }
   }
