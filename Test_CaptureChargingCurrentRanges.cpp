@@ -20,7 +20,7 @@ TEST_CASE("Checks the charging current of same ranges and captures the no of occ
 }
 
 //Testcases for A2DConverter
-TEST_CASE("Testcase to cehck whether Analog current ranges converted to Digital") {
+TEST_CASE("Testcase to check whether Analog current ranges converted to Digital") {
   int AnalogCurrentRanges[] = {1110, 1111, 1112, 1113, 1114, 4094};
   int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
   int DigitalCurrentRanges[TotalNoOfCurrentRanges];
@@ -33,5 +33,14 @@ TEST_CASE("Testcase to cehck whether Analog current ranges converted to Digital"
   {
     REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
   }
+
+}
+
+TEST_CASE("Testcase to check whether Analog current ranges are not converted to Digital since the current range is invalid") {
+  int AnalogCurrentRanges[] = {4095};
+  int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
+  int DigitalCurrentRanges[TotalNoOfCurrentRanges];
+  
+  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges) == false);
 
 }
