@@ -47,7 +47,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
   printf("Range, Readings\n");
   for(i = 0; i < (TotalCurrentRanges-1) ; i++)
   {
-   TotalPeriodicSetRanges += CheckForPeriodicSetRanges(CurrentRanges,TotalCurrentRanges);
+   TotalPeriodicSetRanges += CheckForPeriodicSetRanges(&CurrentRanges[i],TotalCurrentRanges);
   }
   
   return TotalPeriodicSetRanges;
