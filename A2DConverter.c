@@ -13,17 +13,13 @@ void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int Tota
   float convertedValue, ScalingValue, currentValue = 0.0;
   
   conversionMaxValue = (pow(2,12) - 2);
-  printf("conversionMaxvalue:%d",conversionMaxValue);
   totalRanges = TEMPERATURE_MAX - TEMPERATURE_MIN;
   ScalingValue = totalRanges / TEMPERATURE_MAX;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
-    printf("Analog samples:%d\n",AnalogCurrentRanges[currentRangeIndex]);
     convertedValue = TEMPERATURE_MAX * AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
-    printf("Converted value: %f\n",convertedValue);
     currentValue = TEMPERATURE_MIN + (convertedValue * ScalingValue);
-    printf("Current value:%f\n",currentValue);
     DigitalCurrentRanges[currentRangeIndex] = round(currentValue);
     
     if(DigitalCurrentRanges[currentRangeIndex] < 0)
