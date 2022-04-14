@@ -28,7 +28,6 @@ int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
     if(RangeDifference == 0 || RangeDifference == 1)
     {
       TotalPeriodicSetRanges++;
-      printf("%d-%d, %d\n",lowerRange,NextElement,TotalCurrentRanges);
     }
     else
     {
@@ -39,15 +38,31 @@ int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
 }
 
 int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
-  int TotalPeriodicSetRanges = 0;
-  int i;
+  int TotalPeriodicSetRanges,PeriodicSetRanges = 0;
+  int i,lowerRange = 0;
   
   SortCurrentRanges(CurrentRanges,TotalCurrentRanges);
   
   printf("Range, Readings\n");
+  lowerRange = CurrentRanges[0];
   for(i = 0; i < (TotalCurrentRanges-1) ; i++)
   {
-   TotalPeriodicSetRanges += CheckForPeriodicSetRanges(&CurrentRanges[i],TotalCurrentRanges);
+    PeriodicSetRanges = CheckForPeriodicSetRanges(&CurrentRanges[i],TotalCurrentRanges);
+    
+    if(PeriodicSetRanges == 0)
+    {
+      printf("%d-%d %d",lowerRange,CurrentRanges[i],(PeriodicSetRanges+1));
+      lowerRange = CurrentRanges[i+1];
+      PeriodicSetRanges = 0;
+      TotalPeriodicSetRanges++;
+    }
+    
+    if(i == TotalCurrentRanges-2)
+    {
+      printf("%d-%d %d",lowerRange,CurrentRanges[i+1],(PeriodicSetRanges+1));
+      TotalPeriodicSetRanges++;
+    }
+    
   }
   
   return TotalPeriodicSetRanges;
