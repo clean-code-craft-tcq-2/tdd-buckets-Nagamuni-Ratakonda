@@ -6,10 +6,13 @@
 void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
 {
   int currentRangeIndex = 0;
+  float convertedValue = 0.0;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
-    DigitalCurrentRanges[currentRangeIndex] = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
+    convertedValue = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
+    printf("converted value:%f",convertedValue);
+    DigitalCurrentRanges[currentRangeIndex] = round(convertedValue);
   }
 }
 
