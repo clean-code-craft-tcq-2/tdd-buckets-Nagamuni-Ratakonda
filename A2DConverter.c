@@ -12,7 +12,8 @@ void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int Tota
   int currentRangeIndex, conversionMaxValue, totalRanges = 0;
   float convertedValue, ScalingValue, currentValue = 0.0;
   
-  conversionMaxValue = (pow(2,A2DCONVERTER_12BIT)-2);
+  conversionMaxValue = (pow(2,12) - 2);
+  printf("conversionMaxvalue:%d",conversionMaxValue);
   totalRanges = TEMPERATURE_MAX - TEMPERATURE_MIN;
   ScalingValue = totalRanges / TEMPERATURE_MAX;
   
