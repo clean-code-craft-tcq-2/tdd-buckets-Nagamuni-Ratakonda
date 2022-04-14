@@ -3,9 +3,19 @@
 #include <cmath>
 #include "A2DConverter.h"
 
-bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
+void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
 {
-  bool allCurrentRangesConverted = true;
+  int currentRangeIndex = 0;
+  
+  for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
+  {
+    DigitalCurrentRanges[currentRangeIndex] = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
+  }
+}
+
+bool ValidateAnalogCurrentRanges(int *AnalogCurrentRanges, int TotalNoOfCurrentRanges)
+{
+  bool areAllRangesValid = true;
   int currentRangeIndex = 0;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
@@ -13,16 +23,23 @@ bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalC
     if(AnalogCurrentRanges[currentRangeIndex] > 4094)
     {
       printf("Invalid current reading");
-      allCurrentRangesConverted = false;
+      areAllRangesValid = false;
     }
   }
   
+  return areAllRangesValid;
+}
+
+bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
+{
+  bool allCurrentRangesConverted = true;
+  int currentRangeIndex = 0;
+  
+  allCurrentRangesConverted = ValidateAnalogCurrentRanges(AnalogCurrentRanges,TotalNoOfCurrentRanges);
+  
   if(allCurrentRangesConverted == true)
   {
-    for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
-    {
-      DigitalCurrentRanges[currentRangeIndex] = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
-    }
+    A2DConversion(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges);
   }
   
   
