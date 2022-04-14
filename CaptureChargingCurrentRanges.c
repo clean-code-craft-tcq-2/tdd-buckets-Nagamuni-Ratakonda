@@ -65,6 +65,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
     }
     
   }
+  printf("total sets:%d",TotalPeriodicSetRanges);
   
   return TotalPeriodicSetRanges;
 }
