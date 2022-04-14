@@ -3,16 +3,29 @@
 #include <cmath>
 #include "A2DConverter.h"
 
+#define A2DCONVERTER_12BIT 12
+#define TEMPERATURE_MAX 10
+#define TEMPERATURE_MIN 0
+
 void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
 {
-  int currentRangeIndex = 0;
-  float convertedValue = 0.0;
+  int currentRangeIndex, conversionMaxValue, totalRanges = 0;
+  float convertedValue, ScalingValue, currentValue = 0.0;
+  
+  conversionMaxValue = (pow(2,A2DCONVERTER_12BIT)-2);
+  totalRanges = TEMPERATURE_MAX - TEMPERATURE_MIN;
+  ScalingValue = totalRanges / TEMPERATURE_MAX;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
-    convertedValue = ((AnalogCurrentRanges[currentRangeIndex] * 10) / 4094);
-    printf("converted value:%f",convertedValue);
-    DigitalCurrentRanges[currentRangeIndex] = round(convertedValue);
+    convertedValue = AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
+    currentValue = TEMPERATURE_MIN + (TEMPERATURE_MAX * convertedValue * ScalingValue);
+    DigitalCurrentRanges[currentRangeIndex] = round(currentValue);
+    
+    if(DigitalCurrentRanges[currentRangeIndex] < 0)
+    {
+      DigitalCurrentRanges[currentRangeIndex] = abs(DigitalCurrentRanges[currentRangeIndex]);
+    }
   }
 }
 
