@@ -33,6 +33,8 @@ TEST_CASE("Testcase to check whether Analog current ranges converted to Digital"
   {
     REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
   }
+  
+  REQUIRE(CaptureChargingCurrentRanges(ExpectedCurrentRangesInAmps,6) == 5);
 
 }
 
