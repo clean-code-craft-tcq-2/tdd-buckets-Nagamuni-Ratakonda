@@ -1,20 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include "CaptureChargingCurrentRanges.h"
+
+int CompareFunctionForSorting (const void * FirstElement, const void * SecondElement) {
+    return ( *(int*)FirstElement - *(int*)SecondElement );
+}
 
 void SortCurrentRanges(int *CurrentRanges, int TotalCurrentRanges)
 {
-  int i,swap;
-  
-  for(i = 0; i <(TotalCurrentRanges - 1); i++)
-  {
-    if(CurrentRanges[i] > CurrentRanges[i+1])
-    {
-      swap = CurrentRanges[i];
-      CurrentRanges[i] = CurrentRanges[i+1];
-      CurrentRanges[i+1] = swap;
-      i = -1;
-    }
-  }
+  qsort(CurrentRanges,TotalCurrentRanges,sizeof(int),CompareFunctionForSorting);
 }
 
 int CheckForPeriodicSetRanges(int *CurrentRanges, int TotalCurrentRanges)
