@@ -33,7 +33,7 @@ TEST_CASE("Testcase to check whether Analog current ranges converted to Digital"
     REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
   }
   
-  REQUIRE(CaptureChargingCurrentRanges(ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == 2);
+  REQUIRE(CaptureChargingCurrentRanges(DigitalCurrentRanges,TotalNoOfCurrentRanges) == 2);
 
 }
 
@@ -54,19 +54,19 @@ TEST_CASE("Testcase to check whether Analog current ranges are not converted to 
 
 //Testcases for 10Bit A2DConverter
 TEST_CASE("Testcase to check whether Analog current ranges converted to Digital using 10Bit A2DConverter") {
-  int AnalogCurrentRanges[] = {0, 1022, 511};
+  int AnalogCurrentRanges_10Bit[] = {0, 1022, 511};
   int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
-  int DigitalCurrentRanges[TotalNoOfCurrentRanges];
-  int ExpectedCurrentRangesInAmps[] = {15, 15, 0};
+  int DigitalCurrentRanges_10Bit[TotalNoOfCurrentRanges];
+  int ExpectedCurrentRangesInAmps_10Bit[] = {15, 15, 0};
   
   
-  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges,A2DCONVERTER_10BIT,TEMPERATURE_MAX,TEMPERATURE_MIN) == true);
+  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges_10Bit,DigitalCurrentRanges_10Bit,TotalNoOfCurrentRanges,A2DCONVERTER_10BIT,TEMPERATURE_MAX,TEMPERATURE_MIN) == true);
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
-    REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
+    REQUIRE(DigitalCurrentRanges_10Bit[rangeIndex] == ExpectedCurrentRangesInAmps_10Bit[rangeIndex]);
   }
   
-  REQUIRE(CaptureChargingCurrentRanges(ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == 2);
+  REQUIRE(CaptureChargingCurrentRanges(DigitalCurrentRanges_10Bit,TotalNoOfCurrentRanges) == 2);
 
 }
