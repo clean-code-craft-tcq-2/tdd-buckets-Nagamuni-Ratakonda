@@ -23,15 +23,14 @@ TEST_CASE("Testcase to check whether Analog current ranges converted to Digital"
   int AnalogCurrentRanges[] = {1110, 3333, 1112, 3700, 1234, 4094};
   int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
   int DigitalCurrentRanges[TotalNoOfCurrentRanges];
-  int ExpectedCurrentRangesInAmps[] = {2, 8, 2, 9, 3, 10};
+  int ExpectedCurrentRangesInAmps[] = {3, 8, 3, 9, 3, 10};
   
   
   REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges,A2DCONVERTER_12BIT,TEMPERATURE_MAX,TEMPERATURE_MIN) == true);
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
-    printf("Digital current  = %d\n",DigitalCurrentRanges[rangeIndex]);
-    //REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
+    REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
   }
   
   REQUIRE(CaptureChargingCurrentRanges(ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == 2);
@@ -65,8 +64,7 @@ TEST_CASE("Testcase to check whether Analog current ranges converted to Digital 
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
-    printf("Digital current  = %d\n",DigitalCurrentRanges[rangeIndex]);
-    //REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
+    REQUIRE(DigitalCurrentRanges[rangeIndex] == ExpectedCurrentRangesInAmps[rangeIndex]);
   }
   
   REQUIRE(CaptureChargingCurrentRanges(ExpectedCurrentRangesInAmps,TotalNoOfCurrentRanges) == 2);
