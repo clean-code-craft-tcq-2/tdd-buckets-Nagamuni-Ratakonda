@@ -48,19 +48,19 @@ TEST_CASE("Testcase to check whether Analog current ranges are not converted to 
 
 
 #define A2DCONVERTER_10BIT 10
-#define TEMPERATURE_MAX 15
-#define TEMPERATURE_MIN -15
+#define TEMPERATURE_MAX_10BIT 15
+#define TEMPERATURE_MIN_10BIT -15
 
 
 //Testcases for 10Bit A2DConverter
 TEST_CASE("Testcase to check whether Analog current ranges converted to Digital using 10Bit A2DConverter") {
   int AnalogCurrentRanges_10Bit[] = {0, 1022, 511};
-  int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
+  int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges_10Bit) / sizeof(AnalogCurrentRanges_10Bit[0]);
   int DigitalCurrentRanges_10Bit[TotalNoOfCurrentRanges];
   int ExpectedCurrentRangesInAmps_10Bit[] = {15, 15, 0};
   
   
-  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges_10Bit,DigitalCurrentRanges_10Bit,TotalNoOfCurrentRanges,A2DCONVERTER_10BIT,TEMPERATURE_MAX,TEMPERATURE_MIN) == true);
+  REQUIRE(ConvertAnalogCurrentRangesToDigital(AnalogCurrentRanges_10Bit,DigitalCurrentRanges_10Bit,TotalNoOfCurrentRanges,A2DCONVERTER_10BIT,TEMPERATURE_MAX_10BIT,TEMPERATURE_MIN_10BIT) == true);
   
   for(int rangeIndex = 0; rangeIndex < TotalNoOfCurrentRanges; rangeIndex++)
   {
