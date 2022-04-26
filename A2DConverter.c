@@ -14,8 +14,8 @@ void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int Tota
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
-    convertedValue = Temparature_Max * AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
-    currentValue = Temparature_Min + (convertedValue * ScalingValue);
+    convertedValue = AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
+    currentValue = Temparature_Min + (Temparature_Max * convertedValue * ScalingValue);
     DigitalCurrentRanges[currentRangeIndex] = round(currentValue);
     
     if(DigitalCurrentRanges[currentRangeIndex] < 0)
