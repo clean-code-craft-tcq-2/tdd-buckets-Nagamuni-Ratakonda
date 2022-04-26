@@ -3,10 +3,6 @@
 #include <cmath>
 #include "A2DConverter.h"
 
-#define A2DCONVERTER_12BIT 12
-#define TEMPERATURE_MAX 10
-#define TEMPERATURE_MIN 0
-
 void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges, int A2DConverter, int Temparature_Max, int Temparature_Min)
 {
   int currentRangeIndex, conversionMaxValue, totalRanges = 0;
