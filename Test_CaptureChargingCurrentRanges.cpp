@@ -53,7 +53,7 @@ TEST_CASE("Testcase to check whether Analog current ranges are not converted to 
 
 
 //Testcases for 10Bit A2DConverter
-TEST_CASE("Testcase to check whether Analog current ranges converted to Digital") {
+TEST_CASE("Testcase to check whether Analog current ranges converted to Digital using 10Bit A2DConverter") {
   int AnalogCurrentRanges[] = {0, 1022, 511};
   int TotalNoOfCurrentRanges = sizeof(AnalogCurrentRanges) / sizeof(AnalogCurrentRanges[0]);
   int DigitalCurrentRanges[TotalNoOfCurrentRanges];
