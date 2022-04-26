@@ -7,19 +7,19 @@
 #define TEMPERATURE_MAX 10
 #define TEMPERATURE_MIN 0
 
-void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
+void A2DConversion(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges, int A2DConverter, int Temparature_Max, int Temparature_Min)
 {
   int currentRangeIndex, conversionMaxValue, totalRanges = 0;
   float convertedValue, ScalingValue, currentValue = 0.0;
   
-  conversionMaxValue = (pow(2,12) - 2);
-  totalRanges = TEMPERATURE_MAX - TEMPERATURE_MIN;
-  ScalingValue = totalRanges / TEMPERATURE_MAX;
+  conversionMaxValue = (pow(2,A2DConverter) - 2);
+  totalRanges = Temparature_Max - Temparature_Min;
+  ScalingValue = totalRanges / Temparature_Max;
   
   for(currentRangeIndex = 0; currentRangeIndex < TotalNoOfCurrentRanges; currentRangeIndex++)
   {
-    convertedValue = TEMPERATURE_MAX * AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
-    currentValue = TEMPERATURE_MIN + (convertedValue * ScalingValue);
+    convertedValue = Temparature_Max * AnalogCurrentRanges[currentRangeIndex] / conversionMaxValue;
+    currentValue = Temparature_Min + (convertedValue * ScalingValue);
     DigitalCurrentRanges[currentRangeIndex] = round(currentValue);
     
     if(DigitalCurrentRanges[currentRangeIndex] < 0)
@@ -46,7 +46,7 @@ bool ValidateAnalogCurrentRanges(int *AnalogCurrentRanges, int TotalNoOfCurrentR
   return areAllRangesValid;
 }
 
-bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges)
+bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalCurrentRanges, int TotalNoOfCurrentRanges, int A2DConverter, int Temparature_Max, int Temparature_Min)
 {
   bool allCurrentRangesConverted = true;
   int currentRangeIndex = 0;
@@ -55,7 +55,7 @@ bool ConvertAnalogCurrentRangesToDigital(int *AnalogCurrentRanges, int *DigitalC
   
   if(allCurrentRangesConverted == true)
   {
-    A2DConversion(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges);
+    A2DConversion(AnalogCurrentRanges,DigitalCurrentRanges,TotalNoOfCurrentRanges,A2DConverter,Temparature_Max,Temparature_Min);
   }
   
   
