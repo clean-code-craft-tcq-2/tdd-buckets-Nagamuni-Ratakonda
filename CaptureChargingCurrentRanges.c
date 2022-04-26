@@ -51,6 +51,9 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
     NoOfRangeSets = CheckForPeriodicSetRanges(&CurrentRanges[i],TotalCurrentRanges);
     PeriodicSetRanges += NoOfRangeSets;
     
+    if(i+1 != (TotalCurrentRanges-1))
+    {
+    
     if(NoOfRangeSets == 0)
     {
       printf("%d-%d %d\n",lowerRange,CurrentRanges[i],(PeriodicSetRanges+1));
@@ -63,6 +66,7 @@ int CaptureChargingCurrentRanges (int *CurrentRanges, int TotalCurrentRanges){
     {
       printf("%d-%d %d\n",lowerRange,CurrentRanges[i+1],(PeriodicSetRanges+1));
       TotalPeriodicSetRanges++;
+    }
     }
     
   }
